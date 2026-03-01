@@ -10,7 +10,11 @@ public class Planificador {
     private int quantum = 2;
 
     public void agregarProceso(Proceso p) {
+        p.estado = Proceso.Estado.NUEVO;
+        System.out.println(p.nombre + "  NUEVO");
+        
         p.estado = Proceso.Estado.LISTO;
+        System.out.println(p.nombre + "  LISTO");
 
         if (p.prioridadAlerta == 1) {
             colaAlta.add(p);
@@ -28,6 +32,7 @@ public class Planificador {
 
             if (actual != null) {
                 actual.estado = Proceso.Estado.EN_EJECUCION;
+                System.out.println(actual.nombre + " EN_EJECUCION");
 
                 int tiempoEjecucion = Math.min(quantum, actual.tiempoRestante);
                 actual.tiempoRestante -= tiempoEjecucion;
@@ -37,10 +42,11 @@ public class Planificador {
 
                 if (actual.tiempoRestante > 0) {
                     actual.estado = Proceso.Estado.LISTO;
+                    System.out.println(actual.nombre + "  LISTO");
                     reinsertar(actual);
                 } else {
                     actual.estado = Proceso.Estado.TERMINADO;
-                    System.out.println("Proceso terminado: " + actual.nombre);
+                    System.out.println(actual.nombre + "  TERMINADO");
                 }
             }
         }

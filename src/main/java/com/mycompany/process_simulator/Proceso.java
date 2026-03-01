@@ -21,7 +21,7 @@ public class Proceso {
         TERMINADO
     }
 
-    public Proceso(String nombre, int tiempoIrrupcion, int prioridadAlerta, int par2) {
+    public Proceso(String nombre, int tiempoIrrupcion, int prioridadAlerta, int tamanoDatos) {
         this.nombre = nombre;
         this.tiempoIrrupcion = tiempoIrrupcion;
         this.prioridadAlerta = prioridadAlerta;
